@@ -9,24 +9,29 @@ namespace _Project.Logic.Presentation
     {
         private IMessageReceiver _messageReceiver;
         private CompositeDisposable _disposable;
+        private Transform _transform;
 
         [Inject]
         private void Construct(IMessageReceiver messageReceiver)
         {
             _messageReceiver = messageReceiver;
             _disposable = new();
+            _transform = transform;
         }
 
         private void Awake() =>
             _messageReceiver
-                .Receive<UpdatePositionMessage>()
+                .Receive<UpdateTransformMessage>()
                 .Subscribe(UpdatePosition)
                 .AddTo(_disposable);
 
         private void OnDestroy() => 
             _disposable.Dispose();
 
-        private void UpdatePosition(UpdatePositionMessage updatePositionMessage) => 
-            transform.position = updatePositionMessage.Value;
+        private void UpdatePosition(UpdateTransformMessage updateTransformMessage)
+        {
+            _transform.position = updateTransformMessage.Position;
+            _transform.forward = updateTransformMessage.Rotation;
+        }
     }
 }
