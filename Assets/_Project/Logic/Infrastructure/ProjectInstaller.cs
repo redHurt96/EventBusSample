@@ -1,3 +1,4 @@
+using UniRx;
 using Zenject;
 
 namespace _Project.Logic.Infrastructure
@@ -6,7 +7,10 @@ namespace _Project.Logic.Infrastructure
     {
         public override void InstallBindings()
         {
-            base.InstallBindings();
+            MessageBroker messageBroker = new();
+
+            Container.Bind<IMessagePublisher>().FromInstance(messageBroker).AsSingle();
+            Container.Bind<IMessageReceiver>().FromInstance(messageBroker).AsSingle();
         }
     }
 }
