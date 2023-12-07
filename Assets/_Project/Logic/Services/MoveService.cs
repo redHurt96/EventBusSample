@@ -1,9 +1,10 @@
+using _Project.Logic.Framework;
 using _Project.Logic.Messages.FrameworkToDomain;
 using UniRx;
 using UnityEngine;
 using Zenject;
 
-namespace _Project.Logic.Framework
+namespace _Project.Logic.Services
 {
     public class MoveService : ITickable
     {

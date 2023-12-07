@@ -19,19 +19,26 @@ namespace _Project.Logic.Presentation
             _transform = transform;
         }
 
-        private void Awake() =>
+        private void Awake()
+        {
             _messageReceiver
-                .Receive<UpdateTransformMessage>()
+                .Receive<UpdatePositionMessage>()
                 .Subscribe(UpdatePosition)
                 .AddTo(_disposable);
+            
+            _messageReceiver
+                .Receive<UpdateRotationMessage>()
+                .Subscribe(UpdateRotation)
+                .AddTo(_disposable);
+        }
 
         private void OnDestroy() => 
             _disposable.Dispose();
 
-        private void UpdatePosition(UpdateTransformMessage updateTransformMessage)
-        {
-            _transform.position = updateTransformMessage.Position;
-            _transform.forward = updateTransformMessage.Rotation;
-        }
+        private void UpdatePosition(UpdatePositionMessage updatePositionMessage) => 
+            _transform.position = updatePositionMessage.Position;
+
+        private void UpdateRotation(UpdateRotationMessage updateRotationMessage) => 
+            _transform.forward = updateRotationMessage.Rotation;
     }
 }
