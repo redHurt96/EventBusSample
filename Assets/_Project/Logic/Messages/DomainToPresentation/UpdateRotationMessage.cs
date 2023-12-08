@@ -1,14 +1,16 @@
 using UnityEngine;
 
-namespace _Project.Logic.Messages.DomainToPresentation
+namespace _Project.Messages.DomainToPresentation
 {
-    internal readonly struct UpdateRotationMessage
+    public readonly struct UpdateRotationMessage
     {
-        public readonly Vector3 Rotation;
+        public readonly string ID;
+        public readonly Vector3 Value;
 
-        public UpdateRotationMessage(Vector3 rotation)
+        public UpdateRotationMessage(string id, Vector3 value)
         {
-            Rotation = rotation;
+            ID = id;
+            Value = value;
         }
     }
 }

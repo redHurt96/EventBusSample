@@ -1,13 +1,15 @@
 using UnityEngine;
 
-namespace _Project.Logic.Messages.DomainToPresentation
+namespace _Project.Messages.DomainToPresentation
 {
-    internal readonly struct UpdatePositionMessage
+    public readonly struct UpdatePositionMessage
     {
+        public readonly string ID;
         public readonly Vector3 Position;
 
-        public UpdatePositionMessage(Vector3 position)
+        public UpdatePositionMessage(string id, Vector3 position)
         {
+            ID = id;
             Position = position;
         }
     }

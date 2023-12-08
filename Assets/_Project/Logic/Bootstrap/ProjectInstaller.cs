@@ -1,7 +1,7 @@
 using UniRx;
 using Zenject;
 
-namespace _Project.Logic.Infrastructure
+namespace _Project.Bootstrap
 {
     public class ProjectInstaller : MonoInstaller
     {

@@ -1,11 +1,10 @@
-using _Project.Logic.Domain;
-using _Project.Logic.Framework;
-using _Project.Logic.Presentation;
-using _Project.Logic.Services;
+using System;
+using _Project.Domain;
+using _Project.Services;
 using UnityEngine;
 using Zenject;
 
-namespace _Project.Logic.Bootstrap
+namespace _Project.Bootstrap
 {
     public class MainSceneInstaller : MonoInstaller
     {
@@ -17,21 +16,11 @@ namespace _Project.Logic.Bootstrap
             
             Container.Bind<StaticData>().FromNew().AsSingle();
             
+            Container.BindInterfacesAndSelfTo<EntitiesRepository>().AsSingle();
+            Container.BindInterfacesAndSelfTo<CharacterFactory>().AsSingle();
             Container.BindInterfacesAndSelfTo<MoveService>().AsSingle();
             Container.BindInterfacesAndSelfTo<RotateService>().AsSingle();
             Container.BindInterfacesAndSelfTo<EnemiesSpawnService>().AsSingle();
-            
-            Container.BindInterfacesAndSelfTo<Character>().AsSingle().NonLazy();
-            Container.Bind<CharacterView>().FromFactory<CharacterViewFactory>().AsSingle().NonLazy();
-        }
-    }
-
-    public class MainSceneRunner : MonoBehaviour
-    {
-        [Inject]
-        private void Construct()
-        {
-
         }
     }
 }

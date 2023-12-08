@@ -1,10 +1,14 @@
-using _Project.Logic.Framework;
-using _Project.Logic.Messages.FrameworkToDomain;
+using _Project.Domain;
+using _Project.Messages.FrameworkToDomain;
 using UniRx;
 using UnityEngine;
 using Zenject;
+using static _Project.Services.Constants;
+using static UnityEngine.Input;
+using static UnityEngine.Time;
+using static UnityEngine.Vector3;
 
-namespace _Project.Logic.Services
+namespace _Project.Services
 {
     public class MoveService : ITickable
     {
@@ -19,15 +23,12 @@ namespace _Project.Logic.Services
 
         public void Tick()
         {
-            Vector3 input = new(
-                Input.GetAxis("Horizontal"),
-                0f,
-                Input.GetAxis("Vertical"));
+            Vector3 input = new(GetAxis("Horizontal"), 0f, GetAxis("Vertical"));
             
-            if (input != Vector3.zero)
+            if (input != zero)
             {
-                input = input.normalized * _staticData.Speed * Time.deltaTime;
-                _messagePublisher.Publish(new MoveMessage(input));
+                input = input.normalized * _staticData.Speed * deltaTime;
+                _messagePublisher.Publish(new MoveMessage(MAIN_CHARACTER_ID, input));
             }
         }
     }

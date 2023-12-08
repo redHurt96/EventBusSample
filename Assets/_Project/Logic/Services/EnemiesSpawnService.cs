@@ -1,6 +1,6 @@
 using Zenject;
 
-namespace _Project.Logic.Services
+namespace _Project.Services
 {
     public class EnemiesSpawnService : ITickable
     {
