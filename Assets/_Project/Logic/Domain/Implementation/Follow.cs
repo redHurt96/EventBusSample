@@ -43,6 +43,7 @@ namespace _Project.Domain.Implementation
             {
                 Vector3 delta = (target - _position.Value).normalized * _staticData.EnemySpeed * deltaTime;
                 _messagePublisher.Publish(new MoveMessage(_id, delta));
+                _messagePublisher.Publish(new RotateMessage(_id, target));
             }
         }
     }

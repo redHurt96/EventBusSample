@@ -50,8 +50,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2925979113395721159, guid: de6eee8762fb92e4688bba04cdd90ecb, type: 3}
       propertyPath: m_Name
-      value: CommonCharacterView Variant
+      value: MainCharacter
       objectReference: {fileID: 0}
+    - target: {fileID: 5058649647158812918, guid: de6eee8762fb92e4688bba04cdd90ecb, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e067eb90e824e394383f752caaeab099, type: 2}
     - target: {fileID: 7945370568958463231, guid: de6eee8762fb92e4688bba04cdd90ecb, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
