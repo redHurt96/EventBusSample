@@ -41,7 +41,7 @@ namespace _Project.Services
             Rotation rotation = new();
             Move move = new(id, position, _staticData, _publisher, _receiver);
             Rotate rotate = new(id, position, rotation, _publisher, _receiver);
-            Health health = new(id, _staticData.MainCharacterHealth, _receiver);
+            Health health = new(id, _staticData.MainCharacterHealth, _receiver, _publisher);
             Entity entity = new(id, position, rotation, move, rotate, health);
 
             _repository.Add(entity);
@@ -60,7 +60,7 @@ namespace _Project.Services
             Rotate rotate = new(id, position, rotation, _publisher, _receiver);
             Follow follow = new(id, _staticData, _publisher, _repository, position);
             MeleeAttack attack = new(_staticData, _publisher, follow);
-            Health health = new(id, _staticData.EnemyHealth, _receiver);
+            Health health = new(id, _staticData.EnemyHealth, _receiver, _publisher);
             Entity entity = new(id, position, rotation, move, rotate, follow, attack, health);
 
             Vector2 random = insideUnitCircle;
