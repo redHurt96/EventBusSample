@@ -50,7 +50,7 @@ namespace _Project.Services
         {
             GameObject actor = _instantiator.InstantiatePrefabResource(resourceName);
 
-            foreach (IComponentView componentView in actor.GetComponents<IComponentView>())
+            foreach (ICharacterComponent componentView in actor.GetComponents<ICharacterComponent>())
                 componentView.ProvideId(id);
 
             return actor;

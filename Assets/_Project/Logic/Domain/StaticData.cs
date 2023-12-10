@@ -13,5 +13,6 @@ namespace _Project.Domain
         public float EnemyHealth = 10;
         public float MainCharacterHealth = 20;
         public float AttackDistance = 1.5f;
+        public float StopTime = .3f;
     }
 }

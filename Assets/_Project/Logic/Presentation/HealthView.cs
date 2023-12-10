@@ -6,7 +6,7 @@ using Zenject;
 
 namespace _Project.Presentation
 {
-    public class HealthView : MonoBehaviour, IComponentView
+    public class HealthView : MonoBehaviour, ICharacterComponent
     {
         [SerializeField] private Transform _canvas;
         [SerializeField] private Slider _slider;
