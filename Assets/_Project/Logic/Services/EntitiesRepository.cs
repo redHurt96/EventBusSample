@@ -1,29 +1,17 @@
 using System.Collections.Generic;
-using _Project.Domain.Core;
-using _Project.Domain.Implementation;
 using UnityEngine;
-using Zenject;
 using static _Project.Services.Constants;
 
 namespace _Project.Services
 {
-    public class EntitiesRepository : ITickable
+    public class EntitiesRepository
     {
-        private readonly List<Entity> _entities = new();
+        private readonly Dictionary<string, GameObject> _actorsRepository = new();
         
-        public void Add(Entity entity) => 
-            _entities.Add(entity);
+        public void Add(string id, GameObject actor) => 
+            _actorsRepository.Add(id, actor);
 
-        public Vector3 GetMainCharacterPosition() => 
-            _entities
-                .Find(x => x.ID == MAIN_CHARACTER_ID)
-                .Get<Position>()
-                .Value;
-
-        public void Tick()
-        {
-            foreach (Entity entity in _entities) 
-                entity.Tick();
-        }
+        public Vector3 GetMainCharacterPosition() =>
+            _actorsRepository[MAIN_CHARACTER_ID].transform.position;
     }
 }
