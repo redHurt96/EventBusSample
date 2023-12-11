@@ -1,17 +1,17 @@
-using _Project.Messages.FrameworkToDomain;
+using _Project.Messages;
 using UniRx;
 using UnityEngine;
 using Zenject;
-using static _Project.Services.Constants;
+using static _Project.Domain.Constants;
 
 namespace _Project.Services
 {
-    public class RotateService : ITickable
+    public class RotateController : ITickable
     {
         private readonly Camera _camera;
         private readonly IMessagePublisher _messagePublisher;
 
-        public RotateService(Camera camera, IMessagePublisher messagePublisher)
+        public RotateController(Camera camera, IMessagePublisher messagePublisher)
         {
             _camera = camera;
             _messagePublisher = messagePublisher;

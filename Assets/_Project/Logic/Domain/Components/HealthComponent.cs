@@ -1,15 +1,15 @@
-using _Project.Domain.Implementation;
-using _Project.Presentation;
+using _Project.Messages;
 using UniRx;
 using UnityEngine;
 using Zenject;
 using static UnityEngine.Mathf;
 
-namespace _Project.Simplified
+namespace _Project.Domain.Components
 {
-    public class HealthComponent : MonoBehaviour, ICharacterComponent
+    public class HealthComponent : MonoBehaviour, IActorComponent
     {
-        private string _id;
+        public string ID { get; private set; }
+        
         private float _maxValue;
         private float _currentValue;
 
@@ -32,7 +32,7 @@ namespace _Project.Simplified
         }
 
         public void ProvideId(string id) => 
-            _id = id;
+            ID = id;
 
         private void Start()
         {
@@ -48,7 +48,7 @@ namespace _Project.Simplified
 
         private void ProvideDamage(DamageMessage damage)
         {
-            if (_id != damage.ID)
+            if (ID != damage.ID)
                 return;
 
             _currentValue = Max(_currentValue - damage.Amount, 0f);
@@ -57,7 +57,7 @@ namespace _Project.Simplified
 
         private void PublishCurrentHealth()
         {
-            _publisher.Publish(new UpdateHealthMessage(_id, _currentValue, _maxValue));
+            _publisher.Publish(new UpdateHealthMessage(ID, _currentValue, _maxValue));
         }
     }
 }

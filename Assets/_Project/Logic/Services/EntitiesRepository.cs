@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
-using static _Project.Services.Constants;
+using static _Project.Domain.Constants;
 
 namespace _Project.Services
 {

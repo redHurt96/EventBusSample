@@ -1,4 +1,3 @@
-using System;
 using _Project.Domain;
 using _Project.Services;
 using UnityEngine;
@@ -16,11 +15,12 @@ namespace _Project.Bootstrap
             
             Container.Bind<StaticData>().FromNew().AsSingle();
             
-            Container.BindInterfacesAndSelfTo<EntitiesRepository>().AsSingle();
-            Container.BindInterfacesAndSelfTo<CharacterFactory>().AsSingle();
-            Container.BindInterfacesAndSelfTo<MoveService>().AsSingle();
-            Container.BindInterfacesAndSelfTo<RotateService>().AsSingle();
+            Container.BindInterfacesAndSelfTo<MoveController>().AsSingle();
+            Container.BindInterfacesAndSelfTo<RotateController>().AsSingle();
+            Container.BindInterfacesAndSelfTo<AttackController>().AsSingle();
             Container.BindInterfacesAndSelfTo<EnemiesSpawnService>().AsSingle();
+            Container.BindInterfacesAndSelfTo<CharacterFactory>().AsSingle();
+            Container.BindInterfacesAndSelfTo<EntitiesRepository>().AsSingle();
         }
     }
 }

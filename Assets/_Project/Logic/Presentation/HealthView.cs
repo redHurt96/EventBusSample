@@ -1,4 +1,5 @@
-using _Project.Domain.Implementation;
+using _Project.Domain;
+using _Project.Messages;
 using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,7 +7,7 @@ using Zenject;
 
 namespace _Project.Presentation
 {
-    public class HealthView : MonoBehaviour, ICharacterComponent
+    public class HealthView : MonoBehaviour, IActorComponent
     {
         [SerializeField] private Transform _canvas;
         [SerializeField] private Slider _slider;

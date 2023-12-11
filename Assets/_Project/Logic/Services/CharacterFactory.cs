@@ -1,10 +1,10 @@
 using System;
 using _Project.Domain;
+using _Project.Domain.Components;
 using _Project.Presentation;
-using _Project.Simplified;
 using UnityEngine;
 using Zenject;
-using static _Project.Services.Constants;
+using static _Project.Domain.Constants;
 using static UnityEngine.Random;
 
 namespace _Project.Services
@@ -50,10 +50,20 @@ namespace _Project.Services
         {
             GameObject actor = _instantiator.InstantiatePrefabResource(resourceName);
 
-            foreach (ICharacterComponent componentView in actor.GetComponents<ICharacterComponent>())
+            foreach (IActorComponent componentView in actor.GetComponents<IActorComponent>())
                 componentView.ProvideId(id);
 
             return actor;
+        }
+
+        public void CreateProjectile(Vector3 from, Vector3 to)
+        {
+            string id = Guid.NewGuid().ToString();
+            GameObject projectile = CreateView(id, "Projectile");
+            _repository.Add(id, projectile);
+
+            projectile.transform.position = from;
+            projectile.transform.forward = to;
         }
     }
 }

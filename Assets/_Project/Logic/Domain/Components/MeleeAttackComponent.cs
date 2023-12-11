@@ -1,15 +1,14 @@
-using _Project.Domain;
-using _Project.Domain.Implementation;
+using _Project.Messages;
 using _Project.Services;
 using UniRx;
 using UnityEngine;
 using Zenject;
-using static _Project.Services.Constants;
+using static _Project.Domain.Constants;
 using static UnityEngine.Mathf;
 using static UnityEngine.Time;
 using static UnityEngine.Vector3;
 
-namespace _Project.Simplified
+namespace _Project.Domain.Components
 {
     public class MeleeAttackComponent : MonoBehaviour
     {

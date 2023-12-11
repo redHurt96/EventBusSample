@@ -1,15 +1,13 @@
-using _Project.Domain;
-using _Project.Messages.FrameworkToDomain;
-using _Project.Presentation;
+using _Project.Messages;
 using _Project.Services;
 using UniRx;
 using UnityEngine;
 using Zenject;
 using static UnityEngine.Time;
 
-namespace _Project.Simplified
+namespace _Project.Domain.Components
 {
-    public class FollowComponent : MonoBehaviour, ICharacterComponent
+    public class FollowComponent : MonoBehaviour, IActorComponent
     {
         private string _id;
 

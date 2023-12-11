@@ -1,21 +1,21 @@
 using _Project.Domain;
-using _Project.Messages.FrameworkToDomain;
+using _Project.Messages;
 using UniRx;
 using UnityEngine;
 using Zenject;
-using static _Project.Services.Constants;
+using static _Project.Domain.Constants;
 using static UnityEngine.Input;
 using static UnityEngine.Time;
 using static UnityEngine.Vector3;
 
 namespace _Project.Services
 {
-    public class MoveService : ITickable
+    public class MoveController : ITickable
     {
         private readonly IMessagePublisher _messagePublisher;
         private readonly StaticData _staticData;
 
-        public MoveService(IMessagePublisher messagePublisher, StaticData staticData)
+        public MoveController(IMessagePublisher messagePublisher, StaticData staticData)
         {
             _messagePublisher = messagePublisher;
             _staticData = staticData;

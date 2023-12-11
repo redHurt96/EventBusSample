@@ -4,7 +4,7 @@ using Zenject;
 
 namespace _Project.Bootstrap
 {
-    public class MainSceneRunner : MonoBehaviour
+    public class EntryPoint : MonoBehaviour
     {
         private CharacterFactory _factory;
 

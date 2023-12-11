@@ -1,4 +1,4 @@
-namespace _Project.Services
+namespace _Project.Domain
 {
     public static class Constants
     {

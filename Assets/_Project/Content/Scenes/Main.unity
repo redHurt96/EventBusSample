@@ -503,7 +503,7 @@ GameObject:
   - component: {fileID: 2065263112}
   - component: {fileID: 2065263111}
   m_Layer: 0
-  m_Name: Runner
+  m_Name: EntryPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

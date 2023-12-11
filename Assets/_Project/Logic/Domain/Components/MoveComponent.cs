@@ -1,13 +1,12 @@
-using _Project.Domain;
-using _Project.Messages.FrameworkToDomain;
-using _Project.Presentation;
+using System;
+using _Project.Messages;
 using UniRx;
 using UnityEngine;
 using Zenject;
 
-namespace _Project.Simplified
+namespace _Project.Domain.Components
 {
-    public class MoveComponent : MonoBehaviour, ICharacterComponent
+    public class MoveComponent : MonoBehaviour, IActorComponent
     {
         private string _id;
 

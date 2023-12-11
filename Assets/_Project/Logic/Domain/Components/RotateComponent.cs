@@ -1,12 +1,11 @@
-using _Project.Messages.FrameworkToDomain;
-using _Project.Presentation;
+using _Project.Messages;
 using UniRx;
 using UnityEngine;
 using Zenject;
 
-namespace _Project.Simplified
+namespace _Project.Domain.Components
 {
-    public class RotateComponent : MonoBehaviour, ICharacterComponent
+    public class RotateComponent : MonoBehaviour, IActorComponent
     {
         private string _id;
 

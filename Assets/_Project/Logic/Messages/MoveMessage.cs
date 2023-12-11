@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace _Project.Messages.FrameworkToDomain
+namespace _Project.Messages
 {
     public readonly struct MoveMessage
     {

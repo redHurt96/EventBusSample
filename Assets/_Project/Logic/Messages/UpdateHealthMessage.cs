@@ -1,4 +1,4 @@
-namespace _Project.Domain.Implementation
+namespace _Project.Messages
 {
     public readonly struct UpdateHealthMessage
     {

@@ -1,5 +1,5 @@
 using _Project.Domain;
-using _Project.Messages.FrameworkToDomain;
+using _Project.Messages;
 using UniRx;
 using UnityEngine;
 using Zenject;
@@ -7,7 +7,7 @@ using static UnityEngine.Time;
 
 namespace _Project.Presentation
 {
-    public class AnimatorAdapter : MonoBehaviour, ICharacterComponent
+    public class AnimatorAdapter : MonoBehaviour, IActorComponent
     {
         private static readonly int _run = Animator.StringToHash("Run");
         
