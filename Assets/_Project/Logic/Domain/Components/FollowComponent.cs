@@ -13,11 +13,11 @@ namespace _Project.Domain.Components
 
         private StaticData _staticData;
         private CompositeDisposable _disposable;
-        private EntitiesRepository _repository;
+        private ActorsRepository _repository;
         private IMessagePublisher _publisher;
 
         [Inject]
-        private void Construct(StaticData staticData, EntitiesRepository repository, IMessagePublisher publisher)
+        private void Construct(StaticData staticData, ActorsRepository repository, IMessagePublisher publisher)
         {
             _publisher = publisher;
             _repository = repository;
@@ -33,6 +33,9 @@ namespace _Project.Domain.Components
 
         private void Update()
         {
+            if (!_repository.HasMainCharacter)
+                return;
+            
             Vector3 target = _repository.GetMainCharacterPosition();
             Vector3 position = transform.position;
             float distance = Vector3.Distance(position, target);

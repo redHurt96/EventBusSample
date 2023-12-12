@@ -1,4 +1,3 @@
-using System;
 using _Project.Messages;
 using UniRx;
 using UnityEngine;
@@ -8,8 +7,9 @@ namespace _Project.Domain.Components
 {
     public class MoveComponent : MonoBehaviour, IActorComponent
     {
+        [SerializeField] private Rigidbody _rigidbody;
+        
         private string _id;
-
         private StaticData _staticData;
         private IMessageReceiver _receiver;
         private CompositeDisposable _disposable;
@@ -46,7 +46,7 @@ namespace _Project.Domain.Components
                 0f,
                 Mathf.Clamp(target.z, -_staticData.WorldSize, _staticData.WorldSize));
 
-            transform.position = target;
+            _rigidbody.MovePosition(target);
         }
     }
 }

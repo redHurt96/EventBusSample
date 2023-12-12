@@ -2,11 +2,12 @@ using _Project.Messages;
 using UniRx;
 using UnityEngine;
 using Zenject;
+using static UnityEngine.Mathf;
 using static UnityEngine.Time;
 
 namespace _Project.Domain.Components
 {
-    public class MoveForwardComponent : MonoBehaviour, IActorComponent
+    public class ProjectileMoveComponent : MonoBehaviour, IActorComponent
     {
         private string _id;
         private StaticData _staticData;
@@ -22,7 +23,14 @@ namespace _Project.Domain.Components
         public void ProvideId(string id) => 
             _id = id;
 
-        private void Update() => 
-            _publisher.Publish(new MoveMessage(_id, transform.forward * _staticData.ProjectileSpeed * deltaTime));
+        private void Update()
+        {
+            Vector3 position = transform.position;
+            
+            if (Abs(position.x) >= _staticData.WorldSize || Abs(position.y) >= _staticData.WorldSize)
+                _publisher.Publish(new DestroyMessage(_id));
+            else
+                _publisher.Publish(new MoveMessage(_id, transform.forward * (_staticData.ProjectileSpeed * deltaTime)));
+        }
     }
 }

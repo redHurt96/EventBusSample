@@ -11,11 +11,11 @@ namespace _Project.Services
 {
     public class CharacterFactory
     {
-        private readonly EntitiesRepository _repository;
+        private readonly ActorsRepository _repository;
         private readonly StaticData _staticData;
         private readonly IInstantiator _instantiator;
 
-        public CharacterFactory(EntitiesRepository repository, StaticData staticData, IInstantiator instantiator)
+        public CharacterFactory(ActorsRepository repository, StaticData staticData, IInstantiator instantiator)
         {
             _repository = repository;
             _staticData = staticData;

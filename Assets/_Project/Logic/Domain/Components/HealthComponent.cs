@@ -12,7 +12,6 @@ namespace _Project.Domain.Components
         
         private float _maxValue;
         private float _currentValue;
-
         private CompositeDisposable _disposable;
         private IMessagePublisher _publisher;
         private IMessageReceiver _receiver;
@@ -53,11 +52,12 @@ namespace _Project.Domain.Components
 
             _currentValue = Max(_currentValue - damage.Amount, 0f);
             PublishCurrentHealth();
+            
+            if (Approximately(_currentValue, 0f))
+                _publisher.Publish(new DestroyMessage(ID));
         }
 
-        private void PublishCurrentHealth()
-        {
+        private void PublishCurrentHealth() => 
             _publisher.Publish(new UpdateHealthMessage(ID, _currentValue, _maxValue));
-        }
     }
 }

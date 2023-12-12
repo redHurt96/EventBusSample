@@ -16,10 +16,10 @@ namespace _Project.Domain.Components
         private bool _inRange;
         private StaticData _staticData;
         private IMessagePublisher _publisher;
-        private EntitiesRepository _repository;
+        private ActorsRepository _repository;
 
         [Inject]
-        private void Construct(StaticData staticData, IMessagePublisher publisher, EntitiesRepository repository)
+        private void Construct(StaticData staticData, IMessagePublisher publisher, ActorsRepository repository)
         {
             _repository = repository;
             _staticData = staticData;
@@ -28,6 +28,9 @@ namespace _Project.Domain.Components
         
         private void Update()
         {
+            if (!_repository.HasMainCharacter)
+                return;
+            
             if (_cooldown > 0f)
                 _cooldown = Max(_cooldown - deltaTime, 0f);
 

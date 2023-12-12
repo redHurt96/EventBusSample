@@ -5,7 +5,7 @@ using Zenject;
 
 namespace _Project.Domain.Components
 {
-    public class DamageByCollisionComponent : MonoBehaviour, IActorComponent
+    public class ProjectileCollisionComponent : MonoBehaviour, IActorComponent
     {
         private IMessagePublisher _publisher;
         private StaticData _staticData;
@@ -24,7 +24,10 @@ namespace _Project.Domain.Components
         private void OnTriggerEnter(Collider other)
         {
             if (other.TryGetComponent(out HealthComponent health))
+            {
                 _publisher.Publish(new DamageMessage(health.ID, _staticData.ProjectileDamage));
+                _publisher.Publish(new DestroyMessage(_id));
+            }
         }
     }
 }

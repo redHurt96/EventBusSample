@@ -29,6 +29,6 @@ namespace _Project.Domain.Components
             _disposable.Dispose();
 
         private void Execute(AttackMessage message) => 
-            _factory.CreateProjectile(transform.position, transform.position + transform.forward);
+            _factory.CreateProjectile(transform.position + transform.forward, transform.forward);
     }
 }
