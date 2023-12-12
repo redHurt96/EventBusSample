@@ -3,14 +3,15 @@ using _Project.Messages;
 using UniRx;
 using UnityEngine;
 using Zenject;
+using static UnityEngine.Animator;
 using static UnityEngine.Time;
 
 namespace _Project.Presentation
 {
     public class AnimatorAdapter : MonoBehaviour, IActorComponent
     {
-        private static readonly int _run = Animator.StringToHash("Run");
-        private static readonly int _attack = Animator.StringToHash("Attack");
+        private static readonly int _run = StringToHash("Run");
+        private static readonly int _attack = StringToHash("Attack");
         
         private string _id;
         private float _receiveTime;
