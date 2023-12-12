@@ -16,7 +16,8 @@ MonoBehaviour:
   WorldSize: 15
   MainCharacterHealth: 20
   ProjectileDamage: 2
-  ProjectileSpeed: 20
+  ProjectileSpeed: 30
+  ProjectileCastCooldown: 0.5
   MoveDistance: 1
   MeleeAttackValue: 1
   AttackCooldown: 1

@@ -11,6 +11,7 @@ namespace _Project.Domain
         public float MainCharacterHealth = 20;
         public float ProjectileDamage = 2f;
         public float ProjectileSpeed = 8f;
+        public float ProjectileCastCooldown = .5f;
 
         //Enemy
         public float MoveDistance = 1.5f;

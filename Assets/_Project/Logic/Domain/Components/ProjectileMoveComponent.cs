@@ -27,7 +27,7 @@ namespace _Project.Domain.Components
         {
             Vector3 position = transform.position;
             
-            if (Abs(position.x) >= _staticData.WorldSize || Abs(position.y) >= _staticData.WorldSize)
+            if (Abs(position.x) >= _staticData.WorldSize || Abs(position.z) >= _staticData.WorldSize)
                 _publisher.Publish(new DestroyMessage(_id));
             else
                 _publisher.Publish(new MoveMessage(_id, transform.forward * (_staticData.ProjectileSpeed * deltaTime)));
