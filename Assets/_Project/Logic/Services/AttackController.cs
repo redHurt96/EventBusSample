@@ -14,7 +14,7 @@ namespace _Project.Services
         public void Tick()
         {
             if (GetMouseButtonDown(0))
-                _publisher.Publish(new AttackMessage());
+                _publisher.Publish(new AttackRequestMessage());
         }
     }
 }

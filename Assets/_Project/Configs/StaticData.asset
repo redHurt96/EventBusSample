@@ -17,10 +17,10 @@ MonoBehaviour:
   MainCharacterHealth: 20
   ProjectileDamage: 2
   ProjectileSpeed: 20
-  MoveDistance: 1.5
+  MoveDistance: 1
   MeleeAttackValue: 1
   AttackCooldown: 1
   EnemySpeed: 10
   EnemyHealth: 10
-  AttackDistance: 1.5
+  AttackDistance: 1
   StopTime: 0.3

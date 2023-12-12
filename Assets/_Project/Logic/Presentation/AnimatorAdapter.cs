@@ -10,6 +10,7 @@ namespace _Project.Presentation
     public class AnimatorAdapter : MonoBehaviour, IActorComponent
     {
         private static readonly int _run = Animator.StringToHash("Run");
+        private static readonly int _attack = Animator.StringToHash("Attack");
         
         private string _id;
         private float _receiveTime;
@@ -30,11 +31,11 @@ namespace _Project.Presentation
         public void ProvideId(string id) => 
             _id = id;
 
-        private void Awake() =>
-            _receiver
-                .Receive<MoveMessage>()
-                .Subscribe(UpdateMoveAnimation)
-                .AddTo(_disposable);
+        private void Awake()
+        {
+            _receiver.Receive<MoveMessage>().Subscribe(UpdateMoveAnimation).AddTo(_disposable);
+            _receiver.Receive<AttackMessage>().Subscribe(InvokeAttackTrigger).AddTo(_disposable);
+        }
 
         private void OnDestroy() => 
             _disposable.Dispose();
@@ -52,6 +53,14 @@ namespace _Project.Presentation
 
             _receiveTime = time;
             _animator.SetBool(_run, true);
+        }
+
+        private void InvokeAttackTrigger(AttackMessage attackMessage)
+        {
+            if (_id != attackMessage.ID)
+                return;
+            
+            _animator.SetTrigger(_attack);
         }
     }
 }

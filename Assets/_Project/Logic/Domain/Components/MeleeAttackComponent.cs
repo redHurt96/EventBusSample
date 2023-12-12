@@ -10,8 +10,9 @@ using static UnityEngine.Vector3;
 
 namespace _Project.Domain.Components
 {
-    public class MeleeAttackComponent : MonoBehaviour
-    {
+    public class MeleeAttackComponent : MonoBehaviour, IActorComponent
+    {  
+        private string _id;
         private float _cooldown;
         private bool _inRange;
         private StaticData _staticData;
@@ -25,7 +26,10 @@ namespace _Project.Domain.Components
             _staticData = staticData;
             _publisher = publisher;
         }
-        
+
+        public void ProvideId(string id) => 
+            _id = id;
+
         private void Update()
         {
             if (!_repository.HasMainCharacter)
@@ -40,6 +44,7 @@ namespace _Project.Domain.Components
                 return;
             
             _publisher.Publish(new DamageMessage(MAIN_CHARACTER_ID, _staticData.MeleeAttackValue));
+            _publisher.Publish(new AttackMessage(_id));
             _cooldown = _staticData.AttackCooldown;
         }
     }
