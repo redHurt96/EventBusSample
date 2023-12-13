@@ -12,16 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d3ed857c96c42a0b09a1a21b62e7eaa, type: 3}
   m_Name: StaticData
   m_EditorClassIdentifier: 
-  Speed: 15
   WorldSize: 15
-  MainCharacterHealth: 20
-  ProjectileDamage: 2
-  ProjectileSpeed: 30
-  ProjectileCastCooldown: 0.5
-  MoveDistance: 1
-  MeleeAttackValue: 1
-  AttackCooldown: 1
-  EnemySpeed: 10
-  EnemyHealth: 10
-  AttackDistance: 1
-  StopTime: 0.3
+  Hero:
+    Speed: 20
+    MainCharacterHealth: 20
+    ProjectileDamage: 2
+    ProjectileSpeed: 30
+    ProjectileCastCooldown: 0.5
+  Enemy:
+    MoveDistance: 1.5
+    MeleeAttackValue: 1
+    AttackCooldown: 1
+    EnemySpeed: 15
+    EnemyHealth: 10
+    AttackDistance: 1.5
+    StopTime: 0.3
+    SpawnCooldown: 3

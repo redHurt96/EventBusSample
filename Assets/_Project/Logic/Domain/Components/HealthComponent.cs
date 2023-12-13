@@ -20,6 +20,7 @@ namespace _Project.Domain.Components
         {
             _maxValue = maxValue;
             _currentValue = _maxValue;
+            PublishCurrentHealth();
         }
 
         protected override void OnReceive(DamageMessage message)

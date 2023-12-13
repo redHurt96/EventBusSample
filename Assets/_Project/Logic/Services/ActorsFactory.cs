@@ -8,13 +8,13 @@ using static UnityEngine.Random;
 
 namespace _Project.Services
 {
-    public class CharacterFactory
+    public class ActorsFactory
     {
         private readonly ActorsRepository _repository;
         private readonly StaticData _staticData;
         private readonly IInstantiator _instantiator;
 
-        public CharacterFactory(ActorsRepository repository, StaticData staticData, IInstantiator instantiator)
+        public ActorsFactory(ActorsRepository repository, StaticData staticData, IInstantiator instantiator)
         {
             _repository = repository;
             _staticData = staticData;

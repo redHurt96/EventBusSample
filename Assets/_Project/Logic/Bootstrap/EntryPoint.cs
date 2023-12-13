@@ -6,16 +6,13 @@ namespace _Project.Bootstrap
 {
     public class EntryPoint : MonoBehaviour
     {
-        private CharacterFactory _factory;
+        private ActorsFactory _factory;
 
         [Inject]
-        private void Construct(CharacterFactory factory) => 
+        private void Construct(ActorsFactory factory) => 
             _factory = factory;
 
-        private void Start()
-        {
+        private void Start() => 
             _factory.CreateMainCharacter();
-            _factory.CreateEnemy();
-        }
     }
 }

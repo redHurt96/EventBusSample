@@ -17,9 +17,9 @@ namespace _Project.Bootstrap
             
             Container.BindInterfacesAndSelfTo<MoveController>().AsSingle();
             Container.BindInterfacesAndSelfTo<RotateController>().AsSingle();
-            Container.BindInterfacesAndSelfTo<AttackController>().AsSingle();
+            Container.BindInterfacesAndSelfTo<ProjectileAttackController>().AsSingle();
             Container.BindInterfacesAndSelfTo<EnemiesSpawnService>().AsSingle();
-            Container.BindInterfacesAndSelfTo<CharacterFactory>().AsSingle();
+            Container.BindInterfacesAndSelfTo<ActorsFactory>().AsSingle();
             Container.BindInterfacesAndSelfTo<VfxFactory>().AsSingle();
             Container.BindInterfacesAndSelfTo<ActorsRepository>().AsSingle();
         }

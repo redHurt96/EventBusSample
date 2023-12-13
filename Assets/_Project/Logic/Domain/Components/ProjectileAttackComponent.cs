@@ -11,7 +11,7 @@ namespace _Project.Domain.Components
 {
     public class ProjectileAttackComponent : ActorComponent<AttackRequestMessage>
     {
-        private CharacterFactory _factory;
+        private ActorsFactory _factory;
         private IMessagePublisher _publisher;
         private StaticData _staticData;
         private float _cooldown;
@@ -20,7 +20,7 @@ namespace _Project.Domain.Components
         private void Construct(
             IMessageReceiver receiver, 
             IMessagePublisher publisher, 
-            CharacterFactory factory,
+            ActorsFactory factory,
             StaticData staticData)
         {
             _staticData = staticData;
