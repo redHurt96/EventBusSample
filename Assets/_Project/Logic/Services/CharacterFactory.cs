@@ -29,7 +29,7 @@ namespace _Project.Services
             
             actor
                 .GetComponent<HealthComponent>()
-                .Setup(_staticData.MainCharacterHealth);
+                .Setup(_staticData.Hero.MainCharacterHealth);
         }
 
         public void CreateEnemy()
@@ -42,7 +42,7 @@ namespace _Project.Services
             actor.transform.position = new Vector3(random.x, 0f, random.y) * 10f;
             actor
                 .GetComponent<HealthComponent>()
-                .Setup(_staticData.EnemyHealth);
+                .Setup(_staticData.Enemy.EnemyHealth);
         }
 
         private GameObject CreateView(string id, string resourceName)

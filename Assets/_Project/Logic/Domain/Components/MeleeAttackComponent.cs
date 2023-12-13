@@ -1,3 +1,4 @@
+using _Project.Domain.Core;
 using _Project.Messages;
 using _Project.Services;
 using UniRx;
@@ -10,9 +11,8 @@ using static UnityEngine.Vector3;
 
 namespace _Project.Domain.Components
 {
-    public class MeleeAttackComponent : MonoBehaviour, IActorComponent
+    public class MeleeAttackComponent : ActorComponent
     {  
-        private string _id;
         private float _cooldown;
         private bool _inRange;
         private StaticData _staticData;
@@ -27,9 +27,6 @@ namespace _Project.Domain.Components
             _publisher = publisher;
         }
 
-        public void ProvideId(string id) => 
-            _id = id;
-
         private void Update()
         {
             if (!_repository.HasMainCharacter)
@@ -42,13 +39,13 @@ namespace _Project.Domain.Components
             Vector3 currentPosition = transform.position;
             float distance = Distance(currentPosition, mainCharacterPosition);
             
-            if (distance > _staticData.AttackDistance || _cooldown > 0f)
+            if (distance > _staticData.Enemy.AttackDistance || _cooldown > 0f)
                 return;
             
-            _publisher.Publish(new DamageMessage(MAIN_CHARACTER_ID, _staticData.MeleeAttackValue));
-            _publisher.Publish(new AttackMessage(_id));
+            _publisher.Publish(new DamageMessage(MAIN_CHARACTER_ID, _staticData.Enemy.MeleeAttackValue));
+            _publisher.Publish(new AttackMessage(ID));
             _publisher.Publish(new HitMessage(Lerp(mainCharacterPosition, currentPosition, .5f)));
-            _cooldown = _staticData.AttackCooldown;
+            _cooldown = _staticData.Enemy.AttackCooldown;
         }
     }
 }

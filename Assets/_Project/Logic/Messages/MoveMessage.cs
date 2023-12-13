@@ -2,9 +2,9 @@ using UnityEngine;
 
 namespace _Project.Messages
 {
-    public readonly struct MoveMessage
+    public readonly struct MoveMessage : IActorMessage
     {
-        public readonly string ID;
+        public string ID { get; }
         public readonly Vector3 Delta;
 
         public MoveMessage(string id, Vector3 delta)
@@ -12,5 +12,6 @@ namespace _Project.Messages
             ID = id;
             Delta = delta;
         }
+
     }
 }

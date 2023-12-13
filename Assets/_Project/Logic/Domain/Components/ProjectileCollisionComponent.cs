@@ -1,3 +1,4 @@
+using _Project.Domain.Core;
 using _Project.Messages;
 using UniRx;
 using UnityEngine;
@@ -5,11 +6,10 @@ using Zenject;
 
 namespace _Project.Domain.Components
 {
-    public class ProjectileCollisionComponent : MonoBehaviour, IActorComponent
+    public class ProjectileCollisionComponent : ActorComponent
     {
         private IMessagePublisher _publisher;
         private StaticData _staticData;
-        private string _id;
 
         [Inject]
         private void Construct(IMessagePublisher publisher, StaticData staticData)
@@ -18,15 +18,12 @@ namespace _Project.Domain.Components
             _publisher = publisher;
         }
 
-        public void ProvideId(string id) => 
-            _id = id;
-
         private void OnTriggerEnter(Collider other)
         {
             if (other.TryGetComponent(out HealthComponent health))
             {
-                _publisher.Publish(new DamageMessage(health.ID, _staticData.ProjectileDamage));
-                _publisher.Publish(new DestroyMessage(_id));
+                _publisher.Publish(new DamageMessage(health.ID, _staticData.Hero.ProjectileDamage));
+                _publisher.Publish(new DestroyMessage(ID));
                 _publisher.Publish(new BlastMessage(other.ClosestPointOnBounds(transform.position)));
             }
         }

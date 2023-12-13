@@ -5,15 +5,18 @@ using Zenject;
 
 namespace _Project.Domain.Core
 {
-    public abstract class ActorComponent<T> : MonoBehaviour, IActorComponent where T : IActorMessage
+    public abstract class ActorComponent : MonoBehaviour, IActorComponent
     {
         public string ID { get; private set; }
-        
-        private IMessageReceiver _receiver;
-        private CompositeDisposable _disposable;
 
         public void ProvideId(string id) => 
             ID = id;
+    }
+    
+    public abstract class ActorComponent<T> : ActorComponent where T : IActorMessage
+    {
+        private IMessageReceiver _receiver;
+        private CompositeDisposable _disposable;
 
         [Inject]
         private void Construct(IMessageReceiver receiver)

@@ -27,7 +27,7 @@ namespace _Project.Services
             
             if (input != zero)
             {
-                input = input.normalized * _staticData.Speed * deltaTime;
+                input = input.normalized * _staticData.Hero.Speed * deltaTime;
                 _messagePublisher.Publish(new MoveMessage(MAIN_CHARACTER_ID, input));
             }
         }

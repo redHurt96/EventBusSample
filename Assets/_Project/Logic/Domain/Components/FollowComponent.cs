@@ -1,3 +1,4 @@
+using _Project.Domain.Core;
 using _Project.Messages;
 using _Project.Services;
 using UniRx;
@@ -7,9 +8,8 @@ using static UnityEngine.Time;
 
 namespace _Project.Domain.Components
 {
-    public class FollowComponent : MonoBehaviour, IActorComponent
+    public class FollowComponent : ActorComponent
     {
-        private string _id;
         private StaticData _staticData;
         private CompositeDisposable _disposable;
         private ActorsRepository _repository;
@@ -24,9 +24,6 @@ namespace _Project.Domain.Components
             _disposable = new();
         }
 
-        public void ProvideId(string id) => 
-            _id = id;
-
         public void OnDestroy() => 
             _disposable.Dispose();
 
@@ -39,11 +36,11 @@ namespace _Project.Domain.Components
             Vector3 position = transform.position;
             float distance = Vector3.Distance(position, target);
 
-            if (distance > _staticData.MoveDistance)
+            if (distance > _staticData.Enemy.MoveDistance)
             {
-                Vector3 delta = (target - position).normalized * (_staticData.EnemySpeed * deltaTime);
-                _publisher.Publish(new MoveMessage(_id, delta));
-                _publisher.Publish(new RotateMessage(_id, target));
+                Vector3 delta = (target - position).normalized * (_staticData.Enemy.EnemySpeed * deltaTime);
+                _publisher.Publish(new MoveMessage(ID, delta));
+                _publisher.Publish(new RotateMessage(ID, target));
             }
         }
     }

@@ -43,7 +43,7 @@ namespace _Project.Presentation
 
         private void Update()
         {
-            if (time - _receiveTime > _staticData.StopTime)
+            if (time - _receiveTime > _staticData.Enemy.StopTime)
                 _animator.SetBool(_run, false);
         }
 

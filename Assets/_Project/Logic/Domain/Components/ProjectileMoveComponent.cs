@@ -1,3 +1,4 @@
+using _Project.Domain.Core;
 using _Project.Messages;
 using UniRx;
 using UnityEngine;
@@ -7,9 +8,8 @@ using static UnityEngine.Time;
 
 namespace _Project.Domain.Components
 {
-    public class ProjectileMoveComponent : MonoBehaviour, IActorComponent
+    public class ProjectileMoveComponent : ActorComponent
     {
-        private string _id;
         private StaticData _staticData;
         private IMessagePublisher _publisher;
 
@@ -20,17 +20,14 @@ namespace _Project.Domain.Components
             _staticData = staticData;
         }
 
-        public void ProvideId(string id) => 
-            _id = id;
-
         private void Update()
         {
             Vector3 position = transform.position;
             
             if (Abs(position.x) >= _staticData.WorldSize || Abs(position.z) >= _staticData.WorldSize)
-                _publisher.Publish(new DestroyMessage(_id));
+                _publisher.Publish(new DestroyMessage(ID));
             else
-                _publisher.Publish(new MoveMessage(_id, transform.forward * (_staticData.ProjectileSpeed * deltaTime)));
+                _publisher.Publish(new MoveMessage(ID, transform.forward * (_staticData.Hero.ProjectileSpeed * deltaTime)));
         }
     }
 }
