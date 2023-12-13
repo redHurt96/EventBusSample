@@ -56,7 +56,7 @@ namespace _Project.Domain.Components
             if (_cooldown > 0f)
                 return;
             
-            _factory.CreateProjectile(transform.position + transform.forward, transform.forward);
+            _factory.CreateProjectile(transform.position + transform.forward + Vector3.up * .5f, transform.forward);
             _publisher.Publish(new AttackMessage(_id));
             _cooldown = _staticData.ProjectileCastCooldown;
         }

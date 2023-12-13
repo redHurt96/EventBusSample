@@ -1,7 +1,6 @@
 using System;
 using _Project.Domain;
 using _Project.Domain.Components;
-using _Project.Presentation;
 using UnityEngine;
 using Zenject;
 using static _Project.Domain.Constants;

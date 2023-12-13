@@ -27,6 +27,7 @@ namespace _Project.Domain.Components
             {
                 _publisher.Publish(new DamageMessage(health.ID, _staticData.ProjectileDamage));
                 _publisher.Publish(new DestroyMessage(_id));
+                _publisher.Publish(new BlastMessage(other.ClosestPointOnBounds(transform.position)));
             }
         }
     }
