@@ -38,13 +38,16 @@ namespace _Project.Domain.Components
             if (_cooldown > 0f)
                 _cooldown = Max(_cooldown - deltaTime, 0f);
 
-            float distance = Distance(transform.position, _repository.GetMainCharacterPosition());
+            Vector3 mainCharacterPosition = _repository.GetMainCharacterPosition();
+            Vector3 currentPosition = transform.position;
+            float distance = Distance(currentPosition, mainCharacterPosition);
             
             if (distance > _staticData.AttackDistance || _cooldown > 0f)
                 return;
             
             _publisher.Publish(new DamageMessage(MAIN_CHARACTER_ID, _staticData.MeleeAttackValue));
             _publisher.Publish(new AttackMessage(_id));
+            _publisher.Publish(new HitMessage(Lerp(mainCharacterPosition, currentPosition, .5f)));
             _cooldown = _staticData.AttackCooldown;
         }
     }

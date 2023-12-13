@@ -20,7 +20,7 @@ namespace _Project.Bootstrap
             Container.BindInterfacesAndSelfTo<AttackController>().AsSingle();
             Container.BindInterfacesAndSelfTo<EnemiesSpawnService>().AsSingle();
             Container.BindInterfacesAndSelfTo<CharacterFactory>().AsSingle();
-            Container.BindInterfacesAndSelfTo<BlastFactory>().AsSingle();
+            Container.BindInterfacesAndSelfTo<VfxFactory>().AsSingle();
             Container.BindInterfacesAndSelfTo<ActorsRepository>().AsSingle();
         }
     }
