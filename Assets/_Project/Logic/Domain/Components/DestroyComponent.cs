@@ -1,41 +1,21 @@
+using _Project.Domain.Core;
 using _Project.Messages;
 using _Project.Services;
-using UniRx;
-using UnityEngine;
 using Zenject;
 
 namespace _Project.Domain.Components
 {
-    public class DestroyComponent : MonoBehaviour, IActorComponent
+    public class DestroyComponent : ActorComponent<DestroyMessage>
     {
-        private string _id;
-        private IMessageReceiver _receiver;
-        private CompositeDisposable _disposable;
         private ActorsRepository _repository;
 
-        public void ProvideId(string id) => 
-            _id = id;
-
         [Inject]
-        private void Construct(IMessageReceiver receiver, ActorsRepository repository)
-        {
+        private void Construct(ActorsRepository repository) => 
             _repository = repository;
-            _receiver = receiver;
-            _disposable = new();
-        }
 
-        private void Start() =>
-            _receiver
-                .Receive<DestroyMessage>()
-                .Subscribe(DestroyActor)
-                .AddTo(_disposable);
-
-        private void DestroyActor(DestroyMessage message)
+        protected override void OnReceive(DestroyMessage message)
         {
-            if (_id != message.ID)
-                return;
-            
-            _repository.Remove(_id);
+            _repository.Remove(ID);
             Destroy(gameObject);
         }
     }

@@ -1,8 +1,8 @@
 namespace _Project.Messages
 {
-    public readonly struct DestroyMessage
+    public struct DestroyMessage : IActorMessage
     {
-        public readonly string ID;
+        public string ID { get; }
 
         public DestroyMessage(string id) => 
             ID = id;

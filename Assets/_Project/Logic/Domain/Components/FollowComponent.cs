@@ -10,7 +10,6 @@ namespace _Project.Domain.Components
     public class FollowComponent : MonoBehaviour, IActorComponent
     {
         private string _id;
-
         private StaticData _staticData;
         private CompositeDisposable _disposable;
         private ActorsRepository _repository;

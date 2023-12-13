@@ -1,8 +1,10 @@
+using _Project.Domain;
+
 namespace _Project.Messages
 {
-    public readonly struct DamageMessage
+    public struct DamageMessage : IActorMessage
     {
-        public readonly string ID;
+        public string ID { get; }
         public readonly float Amount;
 
         public DamageMessage(string id, float amount)
@@ -10,5 +12,6 @@ namespace _Project.Messages
             ID = id;
             Amount = amount;
         }
+
     }
 }
