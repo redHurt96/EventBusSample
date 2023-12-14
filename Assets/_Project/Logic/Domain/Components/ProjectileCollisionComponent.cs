@@ -20,10 +20,11 @@ namespace _Project.Domain.Components
 
         private void OnTriggerEnter(Collider other)
         {
+            _publisher.Publish(new DestroyMessage(ID));
+            
             if (other.TryGetComponent(out HealthComponent health))
             {
                 _publisher.Publish(new DamageMessage(health.ID, _staticData.Hero.ProjectileDamage));
-                _publisher.Publish(new DestroyMessage(ID));
                 _publisher.Publish(new BlastMessage(other.ClosestPointOnBounds(transform.position)));
             }
         }

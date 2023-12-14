@@ -18,7 +18,7 @@ MonoBehaviour:
     MainCharacterHealth: 20
     ProjectileDamage: 2
     ProjectileSpeed: 30
-    ProjectileCastCooldown: 0.5
+    ProjectileCastCooldown: 0.35
   Enemy:
     MoveDistance: 1.5
     MeleeAttackValue: 1

@@ -21,7 +21,7 @@ namespace _Project.Services
             _instantiator = instantiator;
         }
 
-        public void CreateMainCharacter()
+        public GameObject CreateMainCharacter()
         {
             string id = MAIN_CHARACTER_ID;
             GameObject actor = CreateView(id, "MainCharacter");
@@ -30,6 +30,8 @@ namespace _Project.Services
             actor
                 .GetComponent<HealthComponent>()
                 .Setup(_staticData.Hero.MainCharacterHealth);
+
+            return actor;
         }
 
         public void CreateEnemy()

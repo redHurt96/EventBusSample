@@ -1249,7 +1249,7 @@ GameObject:
   m_Component:
   - component: {fileID: 691052172}
   m_Layer: 0
-  m_Name: Envirinment
+  m_Name: Environment
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1990,6 +1990,7 @@ GameObject:
   - component: {fileID: 963194228}
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
+  - component: {fileID: 963194229}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2071,6 +2072,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 46.101, y: 0, z: 0}
+--- !u!114 &963194229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c373d0f2903431eba876167f0a3e546, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _offset: {x: 0, y: 10, z: -10}
+  _lerp: 0.125
 --- !u!1001 &1057270860
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2398,6 +2413,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _staticData: {fileID: 11400000, guid: 1b6d911414229154a8d062a9f04e4e32, type: 2}
   _camera: {fileID: 963194227}
+  _cameraFollow: {fileID: 963194229}
 --- !u!1001 &1267344338
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2534,7 +2550,7 @@ GameObject:
   - component: {fileID: 1317503426}
   - component: {fileID: 1317503425}
   - component: {fileID: 1317503424}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
